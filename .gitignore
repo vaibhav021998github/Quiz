@@ -1,0 +1,5 @@
+# GitIGnoreFile 
+.settings
+bin/
+.classpath
+.project
