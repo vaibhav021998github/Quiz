@@ -25,8 +25,7 @@ public class ConnectDatabase {
 	System.out.println("...Warning...!");
 	System.out.println("Please Give Response On UpperCase Only");
 	System.out.println("");
-	ps.close();
-	connection2.close();
+	
 	}
 	catch (Exception e)
 	{
@@ -54,8 +53,7 @@ public class ConnectDatabase {
 	ps1.setString(2,name); 
 	ps1.executeUpdate();
 	
-	ps1.close();
-	connection3.close();
+	
  } catch (Exception e) {
 	
 	System.out.println(e);
@@ -64,8 +62,8 @@ public class ConnectDatabase {
 	{
 		if(ps1!=null && connection3!=null)
 		{
-			ps.close();
-			connection2.close();
+			ps1.close();
+			connection3.close();
 		}
 		
 	}

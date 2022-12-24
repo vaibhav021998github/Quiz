@@ -62,8 +62,8 @@ public class DisplayData {
 	
 		 String getDetails="select * from quizdata.student_details where student_id="+getResult;
 		 try {
-			 Connection connection5= ld.getConnectionDetails();
-			Statement st2=connection5.createStatement(); 
+			  connection5= ld.getConnectionDetails();
+			 st2=connection5.createStatement(); 
 			 ResultSet rs=st2.executeQuery(getDetails);
 			 while(rs.next())
 			 {

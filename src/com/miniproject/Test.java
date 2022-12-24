@@ -45,8 +45,10 @@ public class Test {
 				}
 		 finally {
 			 if(st!=null &&connection3!=null)
-		 st.close();
+			 {
+				 st.close();
 			connection3.close();
+			 }
 		 }
 		 return score;
 		 
