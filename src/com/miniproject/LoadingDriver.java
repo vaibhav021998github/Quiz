@@ -11,11 +11,12 @@ public class LoadingDriver {
 			try {	 //using try-catch block for handling exception
 		Class.forName("com.mysql.cj.jdbc.Driver"); //loading driver url..
 		connection1=DriverManager.getConnection("jdbc:mysql://localhost:3306/quizdata", "root", "root");//connecting through JDBC...
-		 }
+		
+			}
 		 catch (Exception e) {
 			System.out.println(e);
 		}
-			
+						
 			 return connection1;
 			 }
 }

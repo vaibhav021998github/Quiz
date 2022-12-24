@@ -7,16 +7,19 @@ import java.util.Scanner;
 
 
 public class DisplayData {
-	
+	Connection connection4=null;
+	Statement st1=null;
+	Connection connection5=null;
+	Statement st2=null;
 	public void getData1() throws Exception
 	{
 		Scanner sc=new Scanner(System.in);
 		 LoadingDriver ld=new LoadingDriver();
-		 Connection connection4= ld.getConnectionDetails();
+		 connection4= ld.getConnectionDetails();
 		 String getDetails="select * from quizdata.student_details order by score desc";//for sorting by score query given
 		 try {
-			Statement st=connection4.createStatement(); 
-			 ResultSet rs=st.executeQuery(getDetails); //retrieving data from database...
+			 st1=connection4.createStatement(); 
+			 ResultSet rs=st1.executeQuery(getDetails); //retrieving data from database...
 			 while(rs.next())
 			 	{
 				 System.out.println(rs.getInt(1)+" \t"+rs.getString(2)+" \t"+rs.getInt(3));
@@ -36,25 +39,32 @@ public class DisplayData {
 				{
 					System.out.println("  Good Bye...! ");	
 				}
+		 }
 				
-				
-		 	}
 			 catch (Exception e)
 			 {
 				 System.out.println(e); 
 			 }
-		 
+		 finally
+			{
+				if(st1!=null && connection4!=null)
+				{
+					st1.close();
+					connection4.close();
+				}
+			sc.close();	
+			}
 		}
 
-	public void getData2(int getResult) 
+	public void getData2(int getResult) throws Exception 
 	{
 		 LoadingDriver ld=new LoadingDriver();
 	
 		 String getDetails="select * from quizdata.student_details where student_id="+getResult;
 		 try {
 			 Connection connection5= ld.getConnectionDetails();
-			Statement st=connection5.createStatement(); 
-			 ResultSet rs=st.executeQuery(getDetails);
+			Statement st2=connection5.createStatement(); 
+			 ResultSet rs=st2.executeQuery(getDetails);
 			 while(rs.next())
 			 {
 				if (rs.getInt(1)==getResult)
@@ -64,12 +74,22 @@ public class DisplayData {
 		 	}
 			 System.out.println("");
 			System.out.println("=================================================================="); 
+		 
 		 }
 		  catch(Exception e)
 		 {
 		 System.out.println(e);
 		 }
-		
+		 finally
+			{
+				if(st2 !=null && connection5!=null)
+				{
+					st2.close();
+					connection5.close();
+				}
+				
+			}
+		 
 	}
 
 }

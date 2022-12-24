@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Test {
 	int score=0;
+	Connection connection3=null;
+	Statement st=null;
 	public int  takeTest() throws Exception
 	{ 
 	
@@ -15,8 +17,8 @@ public class Test {
 		 
 		 String getQuestions="select questions ,options ,answers from quizdata.qatable order by rand() limit 10";
 		 try {
-			 Connection connection3= ld.getConnectionDetails();
-			Statement st=connection3.createStatement(); 
+			  connection3= ld.getConnectionDetails();
+			 st=connection3.createStatement(); 
 			 ResultSet rs=st.executeQuery(getQuestions);
 			 while(rs.next())
 			 {
@@ -34,14 +36,18 @@ public class Test {
 			 System.out.println("");
 			 System.out.println("Your Score out of 10 >> "+score);
 			
-			
+	
 		 } 
 		 
 				catch (Exception e)
 				{
 					System.out.println(e);
 				}
-		 
+		 finally {
+			 if(st!=null &&connection3!=null)
+		 st.close();
+			connection3.close();
+		 }
 		 return score;
 		 
 	}

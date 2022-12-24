@@ -1,9 +1,5 @@
 package com.miniproject;
 
-
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class MainQuiz { 
@@ -54,6 +50,7 @@ public class MainQuiz {
 			int getResult=sc.nextInt();
 			data.getData2(getResult);
 		}
+	
 	}
 
 }
