@@ -47,6 +47,7 @@ public class ConnectDatabase {
 	 
 	LoadingDriver ld=new LoadingDriver();
 	connection3= ld.getConnectionDetails();
+	PreparedStatement ps1=null;
  try {
 	ps1= connection3.prepareStatement("update quizdata.student_details set score=? where name=?");//for updating score giving query..
 	ps1.setInt(1, score);
